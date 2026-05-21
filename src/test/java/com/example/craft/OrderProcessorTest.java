@@ -25,4 +25,49 @@ class OrderProcessorTest {
         assertTrue(receipt.contains("Delivery: £3.99"));
         assertTrue(receipt.contains("Total: £12.49"));
     }
+
+    @Test
+    void staff_discount_applied_correctly() {
+
+        Customer kola = new Customer(
+            "Kola",
+            "kola@gmail.com",
+            "07556612341",
+            CustomerType.STAFF
+        );
+
+        Order order1 = new Order("ORD-2", kola, "NEXT_DAY", "CARD");
+
+        order1.addItem(new OrderItem("Book", 1, 1000));
+        order1.addItem(new OrderItem("Pen", 2, 3000));
+
+        String receipt = processor.process(order1);
+
+        assertTrue(receipt.contains("Order: ORD-2"));
+        assertTrue(receipt.contains("Discount: £14.00"));
+        assertTrue(receipt.contains("Delivery: £7.99"));
+        assertTrue(receipt.contains("Total: £63.99"));
+    }
+
+    @Test
+    void staff_discount_applied_correctly_two() {
+
+        Customer kola = new Customer(
+                "Kola",
+                "kola@gmail.com",
+                "07556612341",
+                CustomerType.STAFF
+        );
+
+        Order order1 = new Order("ORD-3", kola, "NEXT_DAY", "CARD");
+
+        order1.addItem(new OrderItem("Book", 1, 1000));
+
+        String receipt = processor.process(order1);
+
+        assertTrue(receipt.contains("Order: ORD-3"));
+        assertTrue(receipt.contains("Discount: £2.00"));
+        assertTrue(receipt.contains("Delivery: £7.99"));
+        assertTrue(receipt.contains("Total: £15.99"));
+    }
 }

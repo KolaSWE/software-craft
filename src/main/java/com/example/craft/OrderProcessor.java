@@ -8,6 +8,7 @@ import com.example.craft.domain.OrderItem;
 public class OrderProcessor {
 
     public String process(Order order) {
+        //checks the order
         if (order == null) {
             throw new IllegalArgumentException("Order must not be null");
         }
@@ -20,6 +21,8 @@ public class OrderProcessor {
             throw new IllegalArgumentException("Order must contain at least one item");
         }
 
+
+        //checks customer
         Customer customer = order.getCustomer();
 
         if (customer.getName() == null || customer.getName().trim().length() == 0) {
@@ -36,7 +39,7 @@ public class OrderProcessor {
 
         int subtotal = 0;
         int itemCount = 0;
-
+        //sums up the items
         for (OrderItem item : order.getItems()) {
             if (item == null) {
                 throw new IllegalArgumentException("Order item must not be null");
@@ -55,6 +58,7 @@ public class OrderProcessor {
         }
 
         int discount = 0;
+        //applies discount 
 
         if (customer.getType() == CustomerType.STUDENT) {
             discount = (int) (subtotal * 0.15);
@@ -91,6 +95,7 @@ public class OrderProcessor {
 
         int deliveryFee = 0;
 
+        //applies delivery
         if (order.getDeliveryType().equalsIgnoreCase("STANDARD")) {
             deliveryFee = 399;
 
