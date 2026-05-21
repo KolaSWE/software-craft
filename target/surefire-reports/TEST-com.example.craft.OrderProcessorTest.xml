@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.craft.OrderProcessorTest" time="0.244" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.craft.OrderProcessorTest" time="0.219" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -11,7 +11,7 @@
     <property name="java.vm.specification.version" value="21"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-21-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/home/ubuntu/probable-octo-broccoli/target/surefire/surefirebooter-20260520102248879_3.jar /home/ubuntu/probable-octo-broccoli/target/surefire 2026-05-20T10-22-48_276-jvmRun1 surefire-20260520102248879_1tmp surefire_0-20260520102248879_2tmp"/>
+    <property name="sun.java.command" value="/home/ubuntu/probable-octo-broccoli/target/surefire/surefirebooter-20260521095208699_3.jar /home/ubuntu/probable-octo-broccoli/target/surefire 2026-05-21T09-52-08_538-jvmRun1 surefire-20260521095208699_1tmp surefire_0-20260521095208699_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/ubuntu/probable-octo-broccoli/target/test-classes:/home/ubuntu/probable-octo-broccoli/target/classes:/home/ubuntu/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.2/junit-jupiter-5.10.2.jar:/home/ubuntu/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.2/junit-jupiter-api-5.10.2.jar:/home/ubuntu/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/ubuntu/.m2/repository/org/junit/platform/junit-platform-commons/1.10.2/junit-platform-commons-1.10.2.jar:/home/ubuntu/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/ubuntu/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.2/junit-jupiter-params-5.10.2.jar:/home/ubuntu/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.2/junit-jupiter-engine-5.10.2.jar:/home/ubuntu/.m2/repository/org/junit/platform/junit-platform-engine/1.10.2/junit-platform-engine-1.10.2.jar:/home/ubuntu/.m2/repository/org/mockito/mockito-core/5.12.0/mockito-core-5.12.0.jar:/home/ubuntu/.m2/repository/net/bytebuddy/byte-buddy/1.14.15/byte-buddy-1.14.15.jar:/home/ubuntu/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.15/byte-buddy-agent-1.14.15.jar:/home/ubuntu/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/home/ubuntu/.m2/repository/org/mockito/mockito-junit-jupiter/5.12.0/mockito-junit-jupiter-5.12.0.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -26,7 +26,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="surefire.real.class.path" value="/home/ubuntu/probable-octo-broccoli/target/surefire/surefirebooter-20260520102248879_3.jar"/>
+    <property name="surefire.real.class.path" value="/home/ubuntu/probable-octo-broccoli/target/surefire/surefirebooter-20260521095208699_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.10+7-Ubuntu-124.04"/>
     <property name="user.name" value="ubuntu"/>
@@ -52,7 +52,29 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="student_customer_gets_discount_and_receipt_contains_total" classname="com.example.craft.OrderProcessorTest" time="0.142">
+  <testcase name="staff_discount_applied_correctly_two" classname="com.example.craft.OrderProcessorTest" time="0.122">
+    <system-out><![CDATA[Staff discount applied
+Next day delivery selected
+Taking card payment for £15.99
+Saving order ORD-3
+Saving order ORD-3 for customer Kola
+Sending email to kola@gmail.com
+Dear Kola, your order has been processed.
+Order ORD-3 total was £15.99
+Sending SMS to 07556612341
+Order ORD-3 confirmed by SMS
+Receipt
+-------
+Order: ORD-3
+Customer: Kola
+Subtotal: £10.00
+Discount: £2.00
+Delivery: £7.99
+Total: £15.99
+
+]]></system-out>
+  </testcase>
+  <testcase name="student_customer_gets_discount_and_receipt_contains_total" classname="com.example.craft.OrderProcessorTest" time="0.007">
     <system-out><![CDATA[Student discount applied
 Standard delivery selected
 Taking card payment for £12.49
@@ -71,6 +93,28 @@ Subtotal: £10.00
 Discount: £1.50
 Delivery: £3.99
 Total: £12.49
+
+]]></system-out>
+  </testcase>
+  <testcase name="staff_discount_applied_correctly" classname="com.example.craft.OrderProcessorTest" time="0.007">
+    <system-out><![CDATA[Staff discount applied
+Next day delivery selected
+Taking card payment for £63.99
+Saving order ORD-2
+Saving order ORD-2 for customer Kola
+Sending email to kola@gmail.com
+Dear Kola, your order has been processed.
+Order ORD-2 total was £63.99
+Sending SMS to 07556612341
+Order ORD-2 confirmed by SMS
+Receipt
+-------
+Order: ORD-2
+Customer: Kola
+Subtotal: £70.00
+Discount: £14.00
+Delivery: £7.99
+Total: £63.99
 
 ]]></system-out>
   </testcase>
